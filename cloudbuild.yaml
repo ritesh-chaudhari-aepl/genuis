@@ -1,0 +1,15 @@
+steps:
+  # Install Node.js and dependencies
+  - name: 'gcr.io/cloud-builders/yarn'
+    args: ['install']
+    dir: '.'
+
+  # Build the React.js application
+  - name: 'gcr.io/cloud-builders/yarn'
+    args: ['build']
+    dir: '.'
+
+  # Deploy the application to App Engine
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: ['app', 'deploy', '--project=genius-tutor', '--quiet']
+    dir: '.'
